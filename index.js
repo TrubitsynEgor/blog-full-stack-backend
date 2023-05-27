@@ -17,6 +17,7 @@ import {
   getPostById,
   removePost,
   updatePost,
+  getLastTags,
 } from './controllers/index.js'
 
 mongoose
@@ -54,8 +55,10 @@ app.post('/auth/register', registerValidation, validationErrors, register)
 app.get('/auth/me', checkAuth, getUserById)
 //=====================================>
 
+app.get('/tags', getLastTags)
 // Posts===============================>
 app.get('/posts', getAllPosts)
+app.get('/posts/tags', getLastTags)
 app.get('/posts/:id', getPostById)
 app.post(
   '/posts',
