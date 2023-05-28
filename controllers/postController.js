@@ -38,6 +38,7 @@ export const getPostById = async (req, res) => {
       { $inc: { viewsCount: 1 } },
       { returnDocument: 'after' }
     )
+      .populate('user')
       .then((doc) => {
         if (!doc) {
           return res.status(404).json({
