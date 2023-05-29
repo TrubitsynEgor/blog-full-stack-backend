@@ -67,7 +67,7 @@ export const createPost = async (req, res) => {
       title: req.body.title,
       text: req.body.text,
       imageUrl: req.body.imageUrl,
-      tags: req.body.tags,
+      tags: req.body.tags.split(','),
       user: req.userId,
     })
     const post = await doc.save()
@@ -91,7 +91,7 @@ export const updatePost = async (req, res) => {
         title: req.body.title,
         text: req.body.text,
         imageUrl: req.body.imageUrl,
-        tags: req.body.tags,
+        tags: req.body.tags.split(','),
         user: req.userId,
       }
     )
