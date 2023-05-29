@@ -21,9 +21,7 @@ import {
 } from './controllers/index.js'
 
 mongoose
-  .connect(
-    'mongodb+srv://trubitsynwork74:Psqu7uAsl7LpAAFX@cluster0.zulkpqy.mongodb.net/blog?retryWrites=true&w=majority'
-  )
+  .connect(process.env.MONGO_DB_CONNECT_URL)
   .then(() => console.log('DataBase OK!'))
   .catch((e) => console.log('DataBase Error ', e))
 
