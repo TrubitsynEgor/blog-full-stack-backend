@@ -67,7 +67,7 @@ export const createPost = async (req, res) => {
       title: req.body.title,
       text: req.body.text,
       imageUrl: req.body.imageUrl,
-      tags: req.body.tags.split(','),
+      tags: req.body.tags ? req.body.tags.split(',') : [],
       user: req.userId,
     })
     const post = await doc.save()
@@ -75,7 +75,7 @@ export const createPost = async (req, res) => {
   } catch (err) {
     console.log(err)
     res.status(500).json({
-      message: 'Failed to create the article',
+      message: 'Failed to create the post',
     })
   }
 }
@@ -91,7 +91,7 @@ export const updatePost = async (req, res) => {
         title: req.body.title,
         text: req.body.text,
         imageUrl: req.body.imageUrl,
-        tags: req.body.tags.split(','),
+        tags: req.body.tags ? req.body.tags.split(',') : [],
         user: req.userId,
       }
     )
@@ -102,7 +102,7 @@ export const updatePost = async (req, res) => {
   } catch (err) {
     console.log(err)
     res.status(500).json({
-      message: 'Failed to update the article',
+      message: 'Failed to update the post',
     })
   }
 }
